@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\reguser;
+use App\Http\Controllers\userauth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('login');
+ });//default view
+
+ Route::post("user", [userauth::class,'userlogin']);//login module
+
+ Route::get('/login', function () {
+     if(session()->has('user')){
+         return redirect('index');
+     }
+     return view('login');
+  });//login view
+
+ Route::view("/index", 'index');//index view
+
+ Route::get('/logout', function () {
+     if(session()->has('user')){
+         session()->pull('user');
+     }
+     return redirect('login');
+  });//logout view
+
+  Route::get('/register', function () {
+     if(session()->has('user')){
+         return redirect('index');
+     }
+     return view('register');
+  });//register view
+
+  Route::post("reguser", [reguser::class,'registeruser']);//register module
+
+  Route::post("MessageController", [MessageController::class,'messageuser']);

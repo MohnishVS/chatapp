@@ -9,5 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
-   //
+   function messageuser(Request $request){
+       return redirect("index");
+   }
 }
