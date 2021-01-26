@@ -48,4 +48,6 @@ Route::get('/', function () {
 
   Route::post("reguser", [reguser::class,'registeruser']);//register module
 
-  Route::post("MessageController", [MessageController::class,'messageuser']);
+  Route::post("/MessageController/messup", [MessageController::class,'messageup']);
+
+  Route::post("MessageController", [MessageController::class,'messagedisplay']);

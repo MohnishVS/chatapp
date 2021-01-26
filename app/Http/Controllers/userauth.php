@@ -17,6 +17,7 @@ class userauth extends Controller
             if($dbuser == $data['user']){
                 if($dbpass == $data['password']){
                     $req->session()->put('user',$data['user']);
+                    $req->session()->put('user_id',$user->id);
                     return redirect('index');
                 }
                 else{
