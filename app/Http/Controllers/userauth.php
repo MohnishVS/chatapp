@@ -16,9 +16,17 @@ class userauth extends Controller
             $dbpass = $user->password;
             if($dbuser == $data['user']){
                 if($dbpass == $data['password']){
-                    $req->session()->put('user',$data['user']);
-                    $req->session()->put('user_id',$user->id);
-                    return redirect('index');
+                    if($rec = DB::table('users')->where('name',$data['rec'])->first()){
+                        $req->session()->put('user',$data['user']);
+                        $req->session()->put('user_id',$user->id);
+                        $req->session()->put('rec_id',$rec->id);
+                        $req->session()->put('rec_name',$rec->name);
+                        return redirect('index');
+                    }
+                    else{
+                        $response = ["receiver" => "not Found"];
+                    return response($response, 422);
+                    }
                 }
                 else{
                     $response = ["message" => "Password mismatch"];

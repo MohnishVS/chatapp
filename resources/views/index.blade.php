@@ -19,23 +19,29 @@
 
 @section('content')
 
-<div class="container">
+<div class="container text-wrap">
     <div class="card-body">
         <div class="row">
-            <h3>Receiver's name</h3>
+            <h3>{{session('rec_name')}}</h3>
         </div>
-        <div class="row">
+        <div class="row position-relative overflow-auto">
             <div class="col-6 receiver" >
-                <label for="usermsg">{{'hi'}}{{" "}}</label>
-            </div>
-            <div class="col-6 sender">
                 <?php
                     use Illuminate\Support\Facades\DB;
-                    $users = DB::table('messages')->where('user_id', session('user_id'))->pluck('message');
-                    foreach ($users as $usermsg) {
+                    $users = DB::table('messages')->where('user_id', session('rec_id'))->pluck('message');
+                    foreach ($users as $recmsg) {
                 ?>
-                <label for="usermsg">{{$usermsg}}</label>
+                <label for="usermsg">{{$recmsg}}</label>
                 <?php echo "<br>"; } ?>
+            </div>
+            <div class="col-6 sender">
+                    <?php
+                        // use Illuminate\Support\Facades\DB;
+                        $users = DB::table('messages')->where('user_id', session('user_id'))->pluck('message');
+                        foreach ($users as $usermsg) {
+                    ?>
+                    <label for="usermsg">{{$usermsg}}</label>
+                    <?php echo "<br>"; } ?>
             </div>
         </div>
     </div>
@@ -46,7 +52,8 @@
                 <div class="form-group">
                         @csrf
                         <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{session('user_id')}}">
-                        <input type="text" class="form-control w-75" id="message" name="message" placeholder="Enter a Message here">
+                        <input type="hidden" class="form-control" id="rec_id" name="rec_id" value="{{session('rec_id')}}">
+                        <input type="text" class="form-control w-75" id="message" name="message" required maxlength=25 placeholder="Enter a Message here">
                         <button type="submit" class="btn btn-primary w-25" >Send</button>
                 </div>
         </div>

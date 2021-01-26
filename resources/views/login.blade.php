@@ -15,11 +15,14 @@
                 <div class="form-group">
                     <label for="user">Username:</label><br />
                     <input type="text" name="user" id="user" autocomplete="username" class="form-control" required minlength=4 maxlength=8 placeholder="username"><br />
-                    <div id="message1"></div>
                 </div>
                 <div class="form-group">
                     <label for="Password">Password:</label><br />
                     <input type="password" name="password" class="form-control" id="password" required minlength=4 maxlength=8 placeholder="********"><br />
+                </div>
+                <div class="form-group">
+                    <label for="rec">Receiver Username:</label><br />
+                    <input type="text" name="rec" id="rec" autocomplete="rec" class="form-control" required minlength=4 maxlength=8 placeholder="Receiver username"><br />
                 </div>
                 <div class="form-group">
                     <button type="submit" id="loginbtn" class="btn btn-info">Login</button>
