@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
-   function messagedisplay(Request $request){
-    $users = DB::table('messages')->where('user_id', session('user_id'))->pluck('message');
-       foreach ($users as $user) {
-        echo $user,"<br>";
-    }
-   }
    function messageup(Request $request){
        DB::table('messages')->insert([
         'user_id' => $request->user_id,

@@ -34,7 +34,7 @@ Route::get('/', function () {
 
  Route::get('/logout', function () {
      if(session()->has('user')){
-         session()->pull('user');
+         session()->flush();
      }
      return redirect('login');
   });//logout view
@@ -50,4 +50,4 @@ Route::get('/', function () {
 
   Route::post("/MessageController/messup", [MessageController::class,'messageup']);
 
-  Route::post("MessageController", [MessageController::class,'messagedisplay']);
+  //Route::post("MessageController", [MessageController::class,'messagedisplayrec']);

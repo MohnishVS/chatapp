@@ -8,10 +8,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <script src="js/script.js"></script>
+        @yield('head')
     </head>
     <body>
         @yield('headh1')
         <h3 class="text-center">@yield('headh3')</h3>
+        @yield('messagebox')
         @yield('content')
     </body>
 </html>
